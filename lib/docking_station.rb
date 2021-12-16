@@ -16,7 +16,8 @@ class DockingStation
 
   def release_bike
     fail 'No bikes available' if empty? || @bikes.all? { |bike| !bike.working? }
-    @bikes.find { |bike| bike.working? }
+    i = @bikes.index { |bike| bike.working? }
+    @bikes.delete_at(i)
   end 
 
   private 
